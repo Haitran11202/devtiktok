@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
     setTimeout(() => {
       setSearchResult([1, 2, 3]);
     }, 0);
-  });
+  }, []);
   console.log(searchResult);
   return (
     <header className={cx('wrapper')}>
@@ -28,11 +29,15 @@ function Header() {
           interactive={true}
           visible={searchResult.length > 0}
           render={(attrs) => (
-            <PopperWrapper>
-              <div className="box" tabIndex="-1" {...attrs}>
-                Kết quả
-              </div>
-            </PopperWrapper>
+            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+              <PopperWrapper>
+                <h4 className={cx('search-title')}>Accounts</h4>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+              </PopperWrapper>
+            </div>
           )}
         >
           <div className={cx('search')}>
