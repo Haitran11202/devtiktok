@@ -3,6 +3,8 @@ import classNames from 'classnames/bind';
 import images from '~/assets/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+
+import Button from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
@@ -14,7 +16,7 @@ function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      setSearchResult([1, 2, 3]);
+      setSearchResult([]);
     }, 0);
   }, []);
   console.log(searchResult);
@@ -51,7 +53,10 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx('actions')}></div>
+        <div className={cx('actions')}>
+          <Button text>Upload</Button>
+          <Button primary>Logo</Button>
+        </div>
       </div>
     </header>
   );
